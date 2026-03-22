@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aliya Nizami | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --accent: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.4);
+            --dark-bg: #020617;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--dark-bg);
+            background-image: 
+                radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.15) 0%, transparent 35%),
+                radial-gradient(circle at 100% 100%, rgba(37, 99, 235, 0.1) 0%, transparent 35%);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- GRAPHIC BACKGROUND ELEMENTS --- */
+        .bg-pattern {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            opacity: 0.3;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2394a3b8' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2v-4h4v-2H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1.5rem 8%;
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo { font-weight: 800; font-size: 1.3rem; letter-spacing: -1px; }
+        .logo span { color: var(--accent); }
+
+        nav ul { display: flex; list-style: none; gap: 2rem; }
+        nav ul a { text-decoration: none; color: var(--text-dim); font-size: 0.9rem; font-weight: 600; transition: 0.3s; }
+        nav ul a:hover { color: var(--accent); }
+
+        /* --- HERO --- */
+        header {
+            height: 100vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; padding: 0 20px;
+        }
+
+        .hero-terminal {
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            max-width: 800px;
+            width: 100%;
+        }
+
+        /* --- LOGO-IMAGE STYLING --- */
+        .profile-logo-container {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 1.5rem auto;
+        }
+
+        .profile-logo {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+            box-shadow: 0 0 30px var(--accent-glow);
+            background: #1e293b; 
+        }
+
+        .profile-logo-container::after {
+            content: '';
+            position: absolute;
+            top: -8px; left: -8px; right: -8px; bottom: -8px;
+            border-radius: 50%;
+            border: 2px dashed var(--accent);
+            opacity: 0.5;
+            animation: spin 20s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .name-glitch {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .typing-container { font-family: 'Fira Code', monospace; color: var(--accent); font-size: 1.2rem; }
+
+        /* --- SECTIONS --- */
+        section { padding: 100px 10%; position: relative; }
+        .section-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 3rem; text-align: center; }
+
+        /* --- ABOUT --- */
+        .glass-card {
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+        }
+
+        .about-info h3 { color: var(--accent); margin-bottom: 1rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* --- SKILLS GRAPHICS --- */
+        .skills-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px;
+        }
+
+        .skill-box {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 2rem; border-radius: 20px; text-align: center;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .skill-box:hover {
+            background: var(--accent);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px var(--accent-glow);
+        }
+
+        .skill-box i { font-size: 2rem; display: block; margin-bottom: 10px; }
+
+        /* --- RESUME --- */
+        .resume-cta {
+            text-align: center; padding: 60px;
+            background: linear-gradient(45deg, #1e293b, #0f172a);
+            border-radius: 30px; border: 1px solid var(--accent);
+        }
+
+        /* --- CONTACT --- */
+        .contact-footer {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;
+        }
+
+        .contact-item {
+            background: var(--card-bg); padding: 1.5rem; border-radius: 15px;
+            text-decoration: none; color: white; transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.05);
+            display: block;
+        }
+
+        .contact-item:hover { border-color: var(--accent); background: rgba(59, 130, 246, 0.1); }
+
+        footer { text-align: center; padding: 40px; color: var(--text-dim); font-size: 0.8rem; }
+
+        @media (max-width: 768px) {
+            .glass-card { grid-template-columns: 1fr; }
+            nav ul { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-pattern"></div>
+
+    <nav>
+        <div class="logo">ALIYA<span>.NIZAMI</span></div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#resume">Resume</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header id="home">
+        <div class="hero-terminal">
+            <div class="profile-logo-container">
+                <img src="professional.jpeg" alt="Aliya Nizami Logo" class="profile-logo">
+            </div>
+
+            <p style="font-family: 'Fira Code'; color: var(--accent); margin-bottom: 10px;"></p>
+            <h1 class="name-glitch">Hello, I'm ALIYA NIZAMI</h1>
+            <div class="typing-container">
+                > <span id="type-text"></span>
+            </div>
+            <div style="margin-top: 2rem;">
+                <a href="#contact" style="background: var(--accent); color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: 700; display: inline-block;">Establish Uplink</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="about">
+        <h2 class="section-title">Agent Core</h2>
+        <div class="glass-card">
+            <div class="about-info">
+                <h3>Bio-Data</h3>
+                <p>I am a dedicated final-year <strong>BCA Student</strong> in <strong>Karnataka, India</strong>, driven by the challenge of solving complex problems through code.</p>
+                <br>
+                <h3>Mission</h3>
+                <p>Building a successful career in the IT industry by enhancing technical skills and gaining hands-on experience through real-world innovative solutions.</p>
+            </div>
+            <div class="about-info" style="border-left: 1px solid rgba(255,255,255,0.1); padding-left: 40px;">
+                <h3>Current Status</h3>
+                <ul style="list-style: none; color: var(--text-dim);">
+                    <li style="margin-bottom: 10px;">📍 Location: Karnataka, India</li>
+                    <li style="margin-bottom: 10px;">🎓 Education: BCA Final Year</li>
+                    <li style="margin-bottom: 10px;">🔥 Interests: Web Dev & New Tech</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">Technical Matrix</h2>
+        <div class="skills-grid">
+            <div class="skill-box"><i>🐍</i> Python</div>
+            <div class="skill-box"><i>🌐</i> HTML5</div>
+            <div class="skill-box"><i>🎨</i> CSS3</div>
+            <div class="skill-box"><i>⚡</i> JavaScript</div>
+            <div class="skill-box"><i>📦</i> Git/GitHub</div>
+            <div class="skill-box"><i>🗄️</i> SQL</div>
+        </div>
+    </section>
+
+    <section id="resume">
+        <div class="resume-cta">
+            <h2 style="margin-bottom: 1rem;">Curriculum Vitae</h2>
+            <p style="color: var(--text-dim); margin-bottom: 2rem;">Download my detailed resume to review my academic qualifications and technical certifications.</p>
+            
+            <a href="D:\aliya resume (2).pdf" target="_blank" class="contact-item" style="border: 1px solid var(--accent); display: inline-block; width: auto;">
+                📥 View resume (PDF)
+            </a>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Uplink Channels</h2>
+        <div class="contact-footer">
+            <a href="mailto:aliyanizami.05@gmail.com" class="contact-item">
+                <strong>Email</strong><br>aliyanizami.05@gmail.com
+            </a>
+            <a href="https://github.com/aliyanizami" target="_blank" class="contact-item">
+                <strong>GitHub</strong><br>@aliyanizami
+            </a>
+            <a href="https://www.linkedin.com/in/aliya-nizami-2253953b3?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="contact-item">
+                <strong>LinkedIn</strong><br>Aliya Nizami
+            </a>
+			
+            <a href="tel:6363096559" class="contact-item">
+                <strong>Phone</strong><br>+91 63630 96559
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Aliya Nizami </p>
+    </footer>
+
+    <script>
+        const text = document.getElementById('type-text');
+        const phrases = ["BCA Final Year Student.", "Passion For Technology and Innovation.", "Problem Solver."];
+        let i = 0, j = 0, current = "", isDeleting = false;
+
+        function loop() {
+            current = phrases[i];
+            text.innerHTML = isDeleting ? current.substring(0, j--) : current.substring(0, j++);
+            
+            if (!isDeleting && j > current.length) { isDeleting = true; setTimeout(loop, 2000); }
+            else if (isDeleting && j === 0) { isDeleting = false; i = (i + 1) % phrases.length; setTimeout(loop, 500); }
+            else { setTimeout(loop, isDeleting ? 50 : 100); }
+        }
+        loop();
+    </script>
+</body>
+</html>
